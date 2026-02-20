@@ -3,11 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}Mi aplicación{% endblock %}</title>
+    <style>
+        /* Forzar fondo negro y texto blanco por defecto */
+        html, body { background-color: #000 !important; color: #fff !important; }
+        /* Sobrescribir algunas clases Tailwind usadas en plantillas para que no muestren 'fondo claro' */
+        [class*="bg-background-light"], [class*="bg-surface-light"],
+        [class*="surface-light"], [class*="subtle-light"] {
+            background-color: #000 !important;
+            color: #fff !important;
+        }
+        /* Asegurar que textos 'on-surface' o 'text-light' sean visibles sobre el fondo negro */
+        [class*="text-on-surface-light"], [class*="text-text-light"],
+        .text-on-surface-light, .text-text-light {
+            color: #fff !important;
+        }
+    </style>
     {% block javascripts %}
         {{ importmap('app') }}
     {% endblock %}
 </head>
-<body>
+<body style="background-color: #000 !important; color: #fff !important;">
 {% block body %}
     <h1>¡Logrado! Symfony + React</h1>
     <div {{ react_component('Hello', { 'fullName': 'Programador' }) }}></div>

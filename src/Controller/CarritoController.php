@@ -42,7 +42,7 @@ final class CarritoController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_carrito_show', methods: ['GET'])]
+    #[Route('/{id}', name: 'app_carrito_show', requirements: ['id' => '\\d+'], methods: ['GET'])]
     public function show(Carrito $carrito): Response
     {
         return $this->render('carrito/show.html.twig', [
@@ -50,7 +50,7 @@ final class CarritoController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/edit', name: 'app_carrito_edit', methods: ['GET', 'POST'])]
+    #[Route('/{id}/edit', name: 'app_carrito_edit', requirements: ['id' => '\\d+'], methods: ['GET', 'POST'])]
     public function edit(Request $request, Carrito $carrito, EntityManagerInterface $entityManager): Response
     {
         $form = $this->createForm(CarritoType::class, $carrito);
@@ -68,7 +68,7 @@ final class CarritoController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_carrito_delete', methods: ['POST'])]
+    #[Route('/{id}', name: 'app_carrito_delete', requirements: ['id' => '\\d+'], methods: ['POST'])]
     public function delete(Request $request, Carrito $carrito, EntityManagerInterface $entityManager): Response
     {
         if ($this->isCsrfTokenValid('delete'.$carrito->getId(), $request->getPayload()->getString('_token'))) {
@@ -77,5 +77,11 @@ final class CarritoController extends AbstractController
         }
 
         return $this->redirectToRoute('app_carrito_index', [], Response::HTTP_SEE_OTHER);
+    }
+
+    #[Route('/demo', name: 'app_carrito_demo', methods: ['GET'])]
+    public function demo(): Response
+    {
+        return $this->render('carrito/show.html.twig');
     }
 }
