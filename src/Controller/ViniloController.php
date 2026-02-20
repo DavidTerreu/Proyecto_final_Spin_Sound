@@ -42,7 +42,7 @@ final class ViniloController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_vinilo_show', methods: ['GET'])]
+    #[Route('/{id}', name: 'app_vinilo_show', requirements: ['id' => '\\d+'], methods: ['GET'])]
     public function show(Vinilo $vinilo): Response
     {
         return $this->render('vinilo/show.html.twig', [
@@ -50,7 +50,7 @@ final class ViniloController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/edit', name: 'app_vinilo_edit', methods: ['GET', 'POST'])]
+    #[Route('/{id}/edit', name: 'app_vinilo_edit', requirements: ['id' => '\\d+'], methods: ['GET', 'POST'])]
     public function edit(Request $request, Vinilo $vinilo, EntityManagerInterface $entityManager): Response
     {
         $form = $this->createForm(ViniloType::class, $vinilo);
@@ -68,7 +68,7 @@ final class ViniloController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_vinilo_delete', methods: ['POST'])]
+    #[Route('/{id}', name: 'app_vinilo_delete', requirements: ['id' => '\\d+'], methods: ['POST'])]
     public function delete(Request $request, Vinilo $vinilo, EntityManagerInterface $entityManager): Response
     {
         if ($this->isCsrfTokenValid('delete'.$vinilo->getId(), $request->getPayload()->getString('_token'))) {
@@ -77,5 +77,12 @@ final class ViniloController extends AbstractController
         }
 
         return $this->redirectToRoute('app_vinilo_index', [], Response::HTTP_SEE_OTHER);
+    }
+
+    #[Route('/demo', name: 'app_vinilo_demo', methods: ['GET'])]
+    public function demo(): Response
+    {
+        // Render template without requiring DB access — useful for testing the view.
+        return $this->render('vinilo/show.html.twig');
     }
 }

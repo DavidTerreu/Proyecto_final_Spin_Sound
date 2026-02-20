@@ -1,38 +1,151 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Vinilo{% endblock %}
+{% block title %}Viniland - Product Detail{% endblock %}
+
+{% block javascripts %}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&amp;display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <script>document.documentElement.classList.add('dark');</script>
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#e45e1b",
+              "background-light": "#f8f6f6",
+              "background-dark": "#211611",
+            },
+            fontFamily: {
+              display: ["Space Grotesk"],
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              full: "9999px",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      .material-symbols-outlined {
+        font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+      }
+    </style>
+    {{ importmap('app') }}
+{% endblock %}
 
 {% block body %}
-    <h1>Vinilo</h1>
+<div class="flex min-h-screen w-full flex-col">
+<header class="sticky top-0 z-10 w-full bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-sm border-b border-stone-200/50 dark:border-stone-800">
+<div class="container mx-auto px-4">
+<div class="flex h-16 items-center justify-between">
+<div class="flex items-center gap-8">
+<a class="flex items-center gap-2 text-xl font-bold text-stone-900 dark:text-white" href="#">
+<svg class="h-6 w-6 text-primary" fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path clip-rule="evenodd" d="M24 4H6V17.3333V30.6667H24V44H42V30.6667V17.3333H24V4Z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+                Viniland
+              </a>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-sm font-medium text-stone-600 dark:text-stone-300 hover:text-primary dark:hover:text-primary transition-colors" href="#">Novedades</a>
+<a class="text-sm font-medium text-stone-600 dark:text-stone-300 hover:text-primary dark:hover:text-primary transition-colors" href="#">Vinilos</a>
+<a class="text-sm font-medium text-stone-600 dark:text-stone-300 hover:text-primary dark:hover:text-primary transition-colors" href="#">CDs</a>
+<a class="text-sm font-medium text-stone-600 dark:text-stone-300 hover:text-primary dark:hover:text-primary transition-colors" href="#">Merchandising</a>
+<a class="text-sm font-medium text-stone-600 dark:text-stone-300 hover:text-primary dark:hover:text-primary transition-colors" href="#">Ofertas</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden sm:flex relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-stone-400 dark:text-stone-500"> search </span>
+<input class="h-10 w-full max-w-xs rounded-lg border border-stone-200 dark:border-stone-800 bg-background-light/50 dark:bg-background-dark/50 pl-10 pr-4 text-sm focus:border-primary focus:ring-primary" placeholder="Buscar producto..." type="search"/>
+</div>
+<button class="sm:hidden p-2 rounded-lg hover:bg-primary/10 dark:hover:bg-primary/20 transition-colors">
+<span class="material-symbols-outlined text-stone-600 dark:text-stone-300">search</span>
+</button>
+<button class="p-2 rounded-lg hover:bg-primary/10 dark:hover:bg-primary/20 transition-colors">
+<span class="material-symbols-outlined text-stone-600 dark:text-stone-300">person</span>
+</button>
+<button class="relative p-2 rounded-lg hover:bg-primary/10 dark:hover:bg-primary/20 transition-colors">
+<span class="material-symbols-outlined text-stone-600 dark:text-stone-300">shopping_cart</span>
+<span class="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-primary text-xs font-bold text-white">0</span>
+</button>
+</div>
+</div>
+</div>
+</header>
+<main class="container mx-auto flex-1 px-4 py-8">
+<div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:gap-16">
+<div>
+<div class="mb-2 text-sm text-stone-500 dark:text-stone-400">
+<a class="hover:text-primary" href="#">Vinilos</a>
+<span>/</span>
+<span class="text-stone-700 dark:text-stone-200">Rock</span>
+</div>
+<div class="relative aspect-[1/1] w-full overflow-hidden rounded-xl shadow-lg">
+<div class="h-full w-full bg-cover bg-center" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDzjNzegdgq0Tcwji0T2IF0t7PI2G0kqEA61AezVHm2k90EbPJ5a-io_AmrNfAwttv2jhz4RwRjxjuLIktMjTJnjlpA2DVHdwHQxOVIFFoArMgQj64iSM1fTB72LMSdWrPjgQe2fx_QkuXrlixryi2UJ67XUphpJBXsdjy1eiEg6ak2zhE_Drx6S6997m_JDFmG3OQBnPz-eGYrYtlO3_gDD35_KxLayBoTjom_DAp27ModuBGPQhQ_BcWuyK0e03YmbYEksR6tt6pW");'></div>
+</div>
+</div>
+<div>
+<h1 class="text-3xl font-bold tracking-tighter text-stone-900 dark:text-white sm:text-4xl">The Sonic Alchemists - Echoes of the Void</h1>
+<p class="mt-4 text-stone-600 dark:text-stone-300">Sumérgete en el universo sonoro de The Sonic Alchemists con su álbum 'Echoes of the Void'. Este vinilo te invita a un viaje a través de paisajes auditivos inexplorados, donde cada pista es una nueva dimensión.</p>
+<div class="mt-8">
+<p class="text-4xl font-bold text-primary">29,99 €</p>
+</div>
+<div class="mt-8 flex items-center gap-4">
+<button class="flex h-12 flex-1 items-center justify-center rounded-lg bg-primary px-6 font-bold text-white shadow-md transition-transform hover:scale-105">Añadir al carrito</button>
+<button class="flex h-12 w-12 items-center justify-center rounded-lg border border-stone-200 dark:border-stone-800 bg-background-light dark:bg-background-dark text-stone-500 dark:text-stone-400 hover:text-primary dark:hover:text-primary transition-colors">
+<span class="material-symbols-outlined">favorite_border</span>
+</button>
+</div>
+<div class="mt-10 border-t border-stone-200 dark:border-stone-800 pt-8">
+<h3 class="text-lg font-bold text-stone-900 dark:text-white">Detalles del producto</h3>
+<dl class="mt-4 grid grid-cols-2 gap-x-4 gap-y-2 text-sm">
+<dt class="text-stone-500 dark:text-stone-400">Artista</dt>
+<dd class="text-stone-700 dark:text-stone-200">The Sonic Alchemists</dd>
+<dt class="text-stone-500 dark:text-stone-400">Título</dt>
+<dd class="text-stone-700 dark:text-stone-200">Echoes of the Void</dd>
+<dt class="text-stone-500 dark:text-stone-400">Género</dt>
+<dd class="text-stone-700 dark:text-stone-200">Rock Experimental</dd>
+<dt class="text-stone-500 dark:text-stone-400">Formato</dt>
+<dd class="text-stone-700 dark:text-stone-200">Vinilo</dd>
+<dt class="text-stone-500 dark:text-stone-400">Lanzamiento</dt>
+<dd class="text-stone-700 dark:text-stone-200">2023</dd>
+<dt class="text-stone-500 dark:text-stone-400">Discos</dt>
+<dd class="text-stone-700 dark:text-stone-200">1</dd>
+</dl>
+</div>
+</div>
+</div>
+</main>
+<footer class="border-t border-stone-200/50 dark:border-stone-800/50 bg-background-light dark:bg-background-dark">
+<div class="container mx-auto px-4 py-8">
+<div class="flex flex-col items-center justify-between gap-6 sm:flex-row">
+<p class="text-sm text-stone-500 dark:text-stone-400">© 2024 Viniland. Todos los derechos reservados.</p>
+<div class="flex gap-6">
+<a class="text-sm text-stone-500 hover:text-primary dark:text-stone-400 dark:hover:text-primary transition-colors" href="#">Sobre nosotros</a>
+<a class="text-sm text-stone-500 hover:text-primary dark:text-stone-400 dark:hover:text-primary transition-colors" href="#">Contacto</a>
+<a class="text-sm text-stone-500 hover:text-primary dark:text-stone-400 dark:hover:text-primary transition-colors" href="#">Privacidad</a>
+</div>
+<div class="flex gap-4">
+<a class="text-stone-500 hover:text-primary dark:text-stone-400 dark:hover:text-primary transition-colors" href="#">
+<svg aria-hidden="true" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.71v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"></path></svg>
+</a>
+<a class="text-stone-500 hover:text-primary dark:text-stone-400 dark:hover:text-primary transition-colors" href="#">
+<svg aria-hidden="true" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path clip-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 012.153 2.153c.247.636.416 1.363.465 2.427.048 1.024.06 1.378.06 3.808s-.012 2.784-.06 3.808c-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-2.153 2.153c-.636.247-1.363.416-2.427.465-1.024.048-1.378.06-3.808.06s-2.784-.013-3.808-.06c-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-2.153-2.153c-.247-.636-.416-1.363-.465-2.427-.048-1.024-.06-1.378-.06-3.808s.012-2.784.06-3.808c.049-1.064.218-1.791.465-2.427a4.902 4.902 0 012.153-2.153c.636-.247 1.363-.416 2.427-.465C9.53 2.013 9.884 2 12.315 2zM12 8.423a3.577 3.577 0 100 7.154 3.577 3.577 0 000-7.154zm-3.888 7.154a1.333 1.333 0 112.666 0 1.333 1.333 0 01-2.666 0zm5.222-7.154a1.2 1.2 0 100 2.4 1.2 1.2 0 000-2.4z" fill-rule="evenodd"></path></svg>
+</a>
+<a class="text-stone-500 hover:text-primary dark:text-stone-400 dark:hover:text-primary transition-colors" href="#">
+<svg aria-hidden="true" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path clip-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" fill-rule="evenodd"></path></svg>
+</a>
+</div>
+</div>
+</footer>
+</div>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ vinilo.id }}</td>
-            </tr>
-            <tr>
-                <th>Titulo</th>
-                <td>{{ vinilo.titulo }}</td>
-            </tr>
-            <tr>
-                <th>Fecha_lanzamiento</th>
-                <td>{{ vinilo.fechaLanzamiento ? vinilo.fechaLanzamiento|date('Y-m-d') : '' }}</td>
-            </tr>
-            <tr>
-                <th>Precio</th>
-                <td>{{ vinilo.precio }}</td>
-            </tr>
-            <tr>
-                <th>Stock</th>
-                <td>{{ vinilo.stock }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <a href="{{ path('app_vinilo_index') }}">back to list</a>
-
-    <a href="{{ path('app_vinilo_edit', {'id': vinilo.id}) }}">edit</a>
-
-    {{ include('vinilo/_delete_form.html.twig') }}
 {% endblock %}
